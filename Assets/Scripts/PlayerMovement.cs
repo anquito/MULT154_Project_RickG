@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //private Vector3 direction = Vector3.zero;
     public float speed = 10.0f;
     public GameObject spawnPoint;
-    public float jumpForce;
+    //public float jumpForce;
 
     public bool onGround = true;
 
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rbPlayer.velocity = new Vector3(Input.GetAxis("Horizontal") * speed, rbPlayer.velocity.y, rbPlayer.velocity.z);
+        rbPlayer.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rbPlayer.velocity.y, rbPlayer.velocity.z);
 
         if(Input.GetButtonDown("Jump") && onGround)
         {
