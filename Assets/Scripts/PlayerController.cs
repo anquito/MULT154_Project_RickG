@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody rbPlayer;
+    private Renderer playerRend;
     //private Vector3 direction = Vector3.zero;
     public float speed = 10.0f;
     public GameObject spawnPoint;
@@ -14,11 +15,19 @@ public class PlayerMovement : MonoBehaviour
 
     public float forceMultiplier;
     public float gravityMultiplier;
+
+    //public GameObject[] pages;
+    //public bool onExitDoor = false;
+
+    private PageManager pageManager;
     // Start is called before the first frame update
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody>();
         spawnPoint = GameObject.FindGameObjectWithTag("Respawn");
+        //pages = GameObject.FindGameObjectsWithTag("Page");
+        pageManager = GameObject.Find("Page Manager").GetComponent<PageManager>();
+        playerRend = GetComponent<Renderer>();
 
         Physics.gravity *= gravityMultiplier;
     }
@@ -47,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Hazard"))
         {
             Respawn();
+        }
+
+        else if(other.CompareTag("Exit") && pageManager.finishLevel == true)
+        {
+            //onExitDoor = true;
+            playerRend.material.SetColor("_Color", Color.green);
         }
     }
 

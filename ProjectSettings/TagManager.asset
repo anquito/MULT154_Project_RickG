@@ -7,6 +7,8 @@ TagManager:
   - Fire
   - Hazard
   - Ground
+  - Page
+  - Exit
   layers:
   - Default
   - TransparentFX
