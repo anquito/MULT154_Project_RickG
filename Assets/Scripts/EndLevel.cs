@@ -6,12 +6,13 @@ public class EndLevel : MonoBehaviour
 {
     private PlayerController playerController;
     private PageManager pageManager;
+    public GameObject endScreen;
     //private Renderer exitRend;
     // Start is called before the first frame update
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        pageManager = GameObject.Find("Page").GetComponent<PageManager>();
+        pageManager = GameObject.Find("Page Manager").GetComponent<PageManager>();
         //exitRend = GetComponent<Renderer>();
     }
 
@@ -26,12 +27,11 @@ public class EndLevel : MonoBehaviour
         //}
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    // set on ground state to true if we hit ground
-    //    if (other.CompareTag("Player") && pageManager.finishLevel == true)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && pageManager.finishLevel == true)
+        {
+            endScreen.gameObject.SetActive(true);
+        }
+    }
 }

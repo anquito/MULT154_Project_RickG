@@ -7,14 +7,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rbPlayer;
     private Renderer playerRend;
     //private Vector3 direction = Vector3.zero;
-    public float speed = 10.0f;
+    public float speed = 11.0f;
     public GameObject spawnPoint;
     //public float jumpForce;
 
     public bool onGround = true;
 
-    public float forceMultiplier;
-    public float gravityMultiplier;
+    public float forceMultiplier = 16.0f;
+    public float gravityMultiplier = 4.0f;
 
     //public GameObject[] pages;
     //public bool onExitDoor = false;
@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
         pageManager = GameObject.Find("Page Manager").GetComponent<PageManager>();
         playerRend = GetComponent<Renderer>();
 
-        Physics.gravity *= gravityMultiplier;
+        //Physics.gravity *= gravityMultiplier;
+        Physics.gravity = new Vector3(0, -39.24f, 0);
     }
 
     // Update is called once per frame
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
         else if(other.CompareTag("Exit") && pageManager.finishLevel == true)
         {
             //onExitDoor = true;
-            playerRend.material.SetColor("_Color", Color.green);
+            //playerRend.material.SetColor("_Color", Color.green);
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PageCollect : MonoBehaviour
 {
+    public ScoreUI scoreUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreUI = GameObject.Find("Score Text").GetComponent<ScoreUI>();
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class PageCollect : MonoBehaviour
         {
             //Destroy(gameObject);
             gameObject.SetActive(false);
+            ScoreUI.scoreValue += 1;
         }
     }
 }
