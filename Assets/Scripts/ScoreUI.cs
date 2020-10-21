@@ -18,6 +18,6 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Pages Collected: " + scoreValue + "/2";
+        score.text = "Pages Collected: " + scoreValue + "/3";
     }
 }

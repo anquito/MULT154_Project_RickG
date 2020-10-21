@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PageCollect : MonoBehaviour
 {
-    public ScoreUI scoreUI;
+    private ScoreUI scoreUI;
     // Start is called before the first frame update
     void Start()
     {
