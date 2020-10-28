@@ -5,25 +5,30 @@ using UnityEngine;
 public class AnimTrigger : MonoBehaviour
 {
     [SerializeField] private Animator animationController;
-    //public GameObject pageTrigger;
+    private PageManager pageManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pageManager = GameObject.Find("Page Manager").GetComponent<PageManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (pageTrigger = null)
+        //if (pageManager.finishLevel == true && gameObject.CompareTag("Exit"))
         //{
-        //    //playanim
+        //    animationController.SetBool("OpenDoor", true);
         //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && pageManager.finishLevel == true)
+        {
+            animationController.SetBool("PlayAnimation", true);
+            animationController.SetBool("OpenDoor", true);
+        }
+        else if (other.CompareTag("Player") && pageManager.finishLevel == false)
         {
             animationController.SetBool("PlayAnimation", true);
         }
