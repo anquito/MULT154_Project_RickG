@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RestartButtonManager : MonoBehaviour
+public class EndScreen : MonoBehaviour
 {
-    private Button button;
+    //private Button button;
     // Start is called before the first frame update
     void Start()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(Restart);
+        //button = GetComponent<Button>();
+        //button.onClick.AddListener(Restart);
+        //button.onClick.AddListener(MainMenu);
     }
 
     // Update is called once per frame
@@ -23,5 +24,15 @@ public class RestartButtonManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }

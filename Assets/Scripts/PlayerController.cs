@@ -8,8 +8,11 @@ public class PlayerController : MonoBehaviour
     private Renderer playerRend;
     //private Vector3 direction = Vector3.zero;
     public float speed = 11.0f;
+    private float horizontalMove = 0f;
     public GameObject spawnPoint;
     //public float jumpForce;
+
+    public Animator animator;
 
     public bool onGround = true;
 
@@ -37,10 +40,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rbPlayer.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rbPlayer.velocity.y, rbPlayer.velocity.z);
+        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+        //rbPlayer.velocity = horizontalMove;
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if(Input.GetButtonDown("Jump") && onGround)
         {
             //rbPlayer.velocity = new Vector3(rbPlayer.velocity.x, jumpForce, rbPlayer.velocity.z);
+            animator.SetBool("IsJumping", true);
 
             rbPlayer.AddForce(Vector3.up * forceMultiplier, ForceMode.Impulse);
             onGround = false;
@@ -62,7 +70,6 @@ public class PlayerController : MonoBehaviour
         else if(other.CompareTag("Exit") && pageManager.finishLevel == true)
         {
             //onExitDoor = true;
-            //playerRend.material.SetColor("_Color", Color.green);
             this.gameObject.SetActive(false);
         }
     }
@@ -73,6 +80,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             onGround = true;
+            animator.SetBool("IsJumping", false);
         }
     }
 }

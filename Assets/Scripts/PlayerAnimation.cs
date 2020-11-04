@@ -15,25 +15,25 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)
-        {
-            animationController.SetBool("RunAnimation", true);
+        //if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)
+        //{
+        //    animationController.SetBool("RunAnimation", true);
 
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                GameObject.Find("Player").transform.eulerAngles
-                = new Vector3(gameObject.transform.eulerAngles.x, -90, gameObject.transform.eulerAngles.z);
-            }
-            else if (Input.GetAxis("Horizontal") > 0)
-            {
-                GameObject.Find("Player").transform.eulerAngles
-                = new Vector3(gameObject.transform.eulerAngles.x, 90, gameObject.transform.eulerAngles.z);
-            }
-        }
-        else
-        {
-            animationController.SetBool("RunAnimation", false);
-        }
+        //    if (Input.GetAxis("Horizontal") < 0)
+        //    {
+        //        GameObject.Find("Player").transform.eulerAngles
+        //        = new Vector3(gameObject.transform.eulerAngles.x, -90, gameObject.transform.eulerAngles.z);
+        //    }
+        //    else if (Input.GetAxis("Horizontal") > 0)
+        //    {
+        //        GameObject.Find("Player").transform.eulerAngles
+        //        = new Vector3(gameObject.transform.eulerAngles.x, 90, gameObject.transform.eulerAngles.z);
+        //    }
+        //}
+        //else
+        //{
+        //    animationController.SetBool("RunAnimation", false);
+        //}
 
         //if (Input.GetButtonDown("Jump") && playerController.onGround == true)
         //{
@@ -43,6 +43,17 @@ public class PlayerAnimation : MonoBehaviour
         //{
         //    animationController.SetBool("JumpAnimation", false);
         //}
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            GameObject.Find("Player").transform.eulerAngles
+            = new Vector3(gameObject.transform.eulerAngles.x, -90, gameObject.transform.eulerAngles.z);
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            GameObject.Find("Player").transform.eulerAngles
+            = new Vector3(gameObject.transform.eulerAngles.x, 90, gameObject.transform.eulerAngles.z);
+        }
 
         if (playerController.onGround == false)
         {

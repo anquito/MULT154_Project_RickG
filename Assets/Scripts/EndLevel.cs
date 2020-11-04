@@ -7,13 +7,11 @@ public class EndLevel : MonoBehaviour
     private PlayerController playerController;
     private PageManager pageManager;
     public GameObject endScreen;
-    //private Renderer exitRend;
     // Start is called before the first frame update
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         pageManager = GameObject.Find("Page Manager").GetComponent<PageManager>();
-        //exitRend = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
